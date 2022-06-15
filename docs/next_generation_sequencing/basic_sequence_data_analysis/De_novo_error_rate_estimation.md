@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # How accurate is Illumina sequencing?
 
 **Note.** Only do this section if you have plenty of time left, or come back to it later.  
@@ -158,12 +162,13 @@ more times in the whole genome.)
 
 One way to find out what this is, is to search this kmer in the [DFAM database of repetitive
 elements](https://dfam.org). Pasting this kmer into the search tab shows the kmer is part of an
-[Alu element](https://en.wikipedia.org/wiki/Alu_element), which is a type of [short interspersed
-nuclear element](https://en.wikipedia.org/wiki/Short_interspersed_nuclear_element) (SINE). Alus are
-transposable elements that are duplicated in millions of copies around the genome, and indeed they
-[make up a substantial fraction of genome
-sequence](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1636486/). These and similar repetitive
-elements are one of the things that makes accurate sequence data analysis challenging.
+[Alu](https://en.wikipedia.org/wiki/Alu_element), which is a type of [short interspersed nuclear
+element](https://en.wikipedia.org/wiki/Short_interspersed_nuclear_element) (SINE). Alus have
+amplified throughout the human genome by
+[retrotransposition](https://en.wikipedia.org/wiki/Retrotransposon) and in fact [make up a
+substantial fraction of genome sequence](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1636486/).
+These and similar repetitive elements are one of the things that makes accurate sequence data
+analysis challenging.
 
 **Note.** This particular SINE can be seen (for example) at [chr19:49,238,759-49,238,790 in the
 UCSC genome

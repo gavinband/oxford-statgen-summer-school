@@ -1,12 +1,20 @@
-# Performing quality control
+---
+sidebar_position: 3
+---
 
-## Running `fastqc`
+# Performing basic quality control
+
 There are a set of analyses that can be carried out directly on a FASTQ file to assess the quality
 of sequencing. These include looking for read duplication, assessing GC content, looking for
-over-represented sequences and the presence of sequence adapters in reads.
+over-represented sequences and the presence of sequence adapters in reads. Luckily there are
+also well-established tools that make running these analyses easy.
 
 Fortunately there are good software packages to do this for us. The one we'll try is called
-`fastqc` and it can be run as follows.  First make a directory for the output:
+`fastqc` and it can be run as follows.
+
+## Running `fastqc`
+
+  First make a directory for the output:
 ```
 mkdir fastqc_output
 ```

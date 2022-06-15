@@ -1,4 +1,7 @@
-# Introduction
+---
+sidebar_position: 1
+---
+# Getting the prerequisites
 
 To run this tutorial you will need a few things:
 

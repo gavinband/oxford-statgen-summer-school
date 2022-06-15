@@ -1,6 +1,10 @@
-# Inspecting the fastqs
+---
+sidebar_position: 2
+---
 
-## First look at the fastqs
+# A first look at fastqs
+
+## Using UNIX to inspect fastq files
 
 Let's take a look at the data using the UNIX command `less` (actually we'll use `zless`, as this
 will uncompress the file on the fly):
@@ -34,7 +38,7 @@ So this should let you calculate:
 
 * **Question 3**: if the *P.falciparum* genome is about 23 Mb long, what sequencing depth do you expect to get?
 
-### Warmup question hints
+#### Hints
 
 There are several ways to answer these questions, but the quickest and easiest involve
 using basic UNIX command line tools - notably `wc`, which counts lines or characters in its input,
