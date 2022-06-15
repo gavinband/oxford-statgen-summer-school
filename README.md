@@ -1,41 +1,11 @@
-# Website
+# Oxford Statistical Genomics Summer School resources
+## Day one - sequence data analysis
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+This website contains practicals for the 2022 [Oxford Statistical Genomics Summer
+School](https://www.conted.ox.ac.uk/courses/oxford-statistical-genomics-summer-school).
 
-### Installation
+## Contibuting
 
-```
-$ yarn
-```
-
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
-
-### Deployment
-
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+The website is currently built using docusaurus. Markdown documents go in `docs/`. I guess
+notebooks could go in docs/ as well, or they go somewhere else if you wanted e.g. a new
+`notebooks/` folder.
