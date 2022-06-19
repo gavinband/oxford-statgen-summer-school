@@ -1,13 +1,14 @@
 ---
-sidebar_position: 4
+sidebar_position: 8
 ---
 
-# How accurate is Illumina sequencing?
+# Appendix - how accurate is Illumina sequencing?
 
-**Note.** Only do this section if you have plenty of time left, or come back to it later.  
-If you have only 30 minutes or so left, I suggest going on to [aligning reads](aligning_reads.md).
+**Note.** Only do this section if you have plenty of time left, and/or have already read the
+[section on QC](Quality_control.md) and the section on [aligning reads](Aligning_reads.md). Other
+wise please leave for now or come back to it later.
 
-I want to show you another very simple analysis that can be performed directly on a fastq file -
+This page shows you another very simple analysis that can be performed directly on a fastq file -
 with no need to rely on a reference genome. It is **kmer counting** - that is, we count the number
 of occurences of short kmers in the reads and use that to figure out properties of the sequencing.
 In principle this can be quite informative, giving us:
@@ -16,7 +17,7 @@ In principle this can be quite informative, giving us:
 * Information about the genome size
 * Information about the heterozygosity and the amount of repetitive sequence
 
-We'll do the first of these here.
+We'll do the first of these here, for a more advanced method see [GenomeScope](http://qb.cshl.edu/genomescope/).
 
 ## Counting kmers
 
@@ -25,20 +26,34 @@ leads to uneven coverage, which makes these analyses harder.) We'll use data fro
 sample NA12878 and count kmers.
 
 To make this practical run in reasonable time, I have generated a smaller version of the data which
-contains only reads from a region of the genome. Start by downloading this fastq file:
+contains only reads from a region of the genome. You should be able to find these files here:
 
 ```
-# Run this in the bash terminal
-wget [something]
+human/NA12878_ERR3239334-Illumina_Novaseq_6000-chr19_region-read1.fastq.gz
+human/NA12878_ERR3239334-Illumina_Novaseq_6000-chr19_region-read2.fastq.gz
 ```
 
-To count kmers we will use [`jellyfish`](https://github.com/zippav/Jellyfish-2).  Run it like this:
+**Note.** We looked at the fastqc output from this sample already - see it here if you want a refresh:
+[read 1 link](ERR3239334-Illumina_NovaSeq_6000_read1_fastqc.html)
+[read 2 link](ERR3239334-Illumina_NovaSeq_6000_read2_fastqc.html).
+
+To count kmers we will use [`jellyfish`](https://github.com/zippav/Jellyfish-2).  First let's change into the right directory:
+
 ```
-jellyfish count -C -m 31 -s 10M -o NA12878_Illumina-Novaseq6000.jf NA12878.final.chr19:48145971-49255951_read1.fastq NA12878.final.chr19:48145971-49255951_read2.fastq
+cd ~/sequence_data_analysis/human
 ```
 
-If you type `ls` you'll see Jellyfish has output a new file, ending `.jf`. This file contains a
-list of all 31bp kmers present in the reads and the number of times each one was observed.  The options here mean:
+Now Jellyfish can be run like this:
+```
+jellyfish count -C -m 31 -s 10M -o NA12878_Illumina-Novaseq_6000.jf <(zcat NA12878_ERR3239334-Illumina_Novaseq_6000-chr19_region-read2.fastq.gz) <(zcat NA12878_ERR3239334-Illumina_Novaseq_6000-chr19_region-read1.fastq.gz)
+```
+
+**Note.** The funny syntax involving `zcat` and `<()` is used because jellyfish does not directly
+support decompression of these gzipped files.  We run `zcat` and redirect it into `jellyfish`.
+
+This should take a couple of minutes. If you type `ls` you'll see Jellyfish has output a new file,
+ending `.jf`. This file contains a list of all 31bp kmers present in the reads and the number of
+times each one was observed. The options here mean:
 
 * `-m 31`: count 31-base pair kmers
 
@@ -59,14 +74,14 @@ numbers are much smaller.
 The simplest way to analyse the above is to make a histogram of kmer counts:
 
 ```
-jellyfish histo NA12878.final.chr19:48145971-49255951.jf > NA12878.final.chr19:48145971-49255951.jf.histogram
+jellyfish histo NA12878_Illumina-Novaseq_6000.jf > NA12878_Illumina-Novaseq_6000.jf.histogram
 ```
 
 To analyse this file, let's load it into R.  Switch to an R session and plot it:
 
 ```
 # In an R session
-X = read.table( "NA12878.final.chr19:48145971-49255951.jf.histogram", header = FALSE, as.is = TRUE )
+X = read.table( "NA12878_Illumina-Novaseq_6000.jf.histogram", header = FALSE, as.is = TRUE )
 colnames(X) = c( "observed_count", "number_of_kmers" )
 plot( X$observed_count, X$number_of_kmers, type = 'l' )
 ```
@@ -123,9 +138,11 @@ ad-hoc rule that assumes coverage <= 5 implies the kmer was an error:
 number_of_error_kmers = sum( X[1:5,1] * X[1:5,2] )
 total_kmers = sum( X[,1] * X[,2] )
 kmer_error_rate = number_of_error_kmers / total_kmers
+
+cat( sprintf( "The estimated 31bp Kmer error rate is: %.2f%%!\n", kmer_error_rate * 100 ))
 ```
 
-You will probablt see a kmer error rate of about 8.5%, which is typical for Illumina data. In other
+You will probably see a kmer error rate of about 8.5%, which is typical for Illumina data. In other
 words, **about 8% of 31-base pair kmers in the reads contain errors**. If you think that's quite a
 lot, so do I! Even short-read data like this has quite a few errors in it.
 
@@ -142,12 +159,12 @@ file.  This can be found by looking at the tail of the histogram:
 tail( X )
 ```
 
-There's a kmer in there *repeated 4,420 times!*. To find it let's use `jellyfish dump`. We are now
-switching back to the terminal:
+There's a kmer in there *repeated 4,420 times!*. To find it let's use `jellyfish dump`. Switch back
+to the terminal window and type:
 
 ```
 # in the terminal
-jellyfish dump -L 4420
+jellyfish dump -L 4420 NA12878_Illumina-Novaseq_6000.jf
 ```
 
 this should print out:
@@ -178,4 +195,4 @@ being within this SINE.
 
 ### Next steps
 
-Now move on to [aligning reads](aligning_reads.md).
+Go back [to the practical](Pipeline_outline.md#the-practical-in-a-nutshell).

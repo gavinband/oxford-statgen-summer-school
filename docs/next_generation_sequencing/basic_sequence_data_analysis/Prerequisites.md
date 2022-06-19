@@ -3,62 +3,48 @@ sidebar_position: 1
 ---
 # Getting the prerequisites
 
-To run this tutorial you will need a few things:
+To run this tutorial you will need a few things.  This page will get you set up.
 
-## Start in a new, empty folder
+#### Using  JupyterHub
 
-We recommend first creating a new empty folder to run the practical in.  You could do that like so:
-```
-mkdir sequence_data_tutorial
-cd sequence_data_tutorial
-```
+If you are running this as part of the Oxford Statistical Genomics Summer School, you'll be using
+JupyterHub to run the practicals, hosted at
+[statgenschool.bmrc.ox.ac.uk](https://statgenschool.bmrc.ox.ac.uk). You should hopefully have
+already logged in to this site. Please make sure you are working in the 'Monday' image for this
+work.  (See [how to switch your JupyterHub image](../switching_images.md).)
 
-## Getting the read data
+For this practical we'll be using both a terminal window and an R session.
 
-To run the tutorial you first need a pair of fastq files representing paired-end short-read sequencing.
+#### Getting the data
 
-To make the tutorial run in a reasonable time, this needs to be not too big, but to make it useful,
-it needs to be big enough. I've prepared a set of files from sequencing of *Plasmodium falciparum*
-which you can find [here](https://www.well.ox.ac.uk/~gav/projects/gms/statistics-course/Next_Generation_Sequencing/practicals/ngs_processing_pipeline/data/reads/subsampled/).
+To get the data, open a terminal and run the following commands:
 
-Pick one of these samples and download its data - note you need both the `[something]_1.fastq.gz`
-and `[something]_2.fastq.gz` files (because these contain, respectively, the first and second read
-in each pair).
-
-**Note** if you are working in a remote environment (such as a JupyterHub instance) then use the `wget` command to download it, for example:
-```
-wget https://www.well.ox.ac.uk/~gav/projects/gms/statistics-course/Next_Generation_Sequencing/practicals/ngs_processing_pipeline/data/reads/subsampled/ERR377582_1.fastq.gz
-wget https://www.well.ox.ac.uk/~gav/projects/gms/statistics-course/Next_Generation_Sequencing/practicals/ngs_processing_pipeline/data/reads/subsampled/ERR377582_2.fastq.gz
+```sh
+# download the data
+wget https://www.well.ox.ac.uk/~gav/projects/oxford_statgen_summer_school/day_one_morning.tgz
+# extract it
+tar -xzf day_one_morning.tgz
 ```
 
-Feel free to choose a different sample (or download more of them) as well.
+You should now have a folder called `sequence_data_analysis`.  
 
-## Getting the reference sequence
+**Note.** for the practical we'll generally assume you are working in that folder. In a terminal
+you do this by typing `cd sequence_data_analysis`; in R, you could do it by typing
+`setwd("sequence_data_analysis")`.  
 
-For *P.falciparum* malaria the standard reference is known as `Pf3D7_v3` (version 3 of the assembly
-built from the 3D7 isolate. 3D7 was originally isolated from an individual who lived near Schipol
-airport. This person had never left The Netherlands but nevertheless became sick with malaria,
-presumably because an infected mosquito hitched a ride on an incoming flight. The parasite is
-thought to be of west African origin.
+**Note.** If something's not working for you, please check which folder you are in first, by typing
+`cwd` in the terminal or `getwd()` in R.
 
-You can download the reference sequence
-[here](https://www.well.ox.ac.uk/~gav/projects/gms/statistics-course/Next_Generation_Sequencing/prac
-ticals/ngs_processing_pipeline/data/reference/).
+#### Getting the software
 
-**Note** if you are working in a remote environment (such as a JupyterHub instance) then use the
-`wget` command in a terminal to download it:
-
-```
-wget https://www.well.ox.ac.uk/~gav/projects/gms/statistics-course/Next_Generation_Sequencing/practicals/ngs_processing_pipeline/data/reference/Pf3D7_v3.fa.gz
-```
-
-## Getting the software
+If you are running this as part of the Oxford Statistical Genomics Summer School, most of the
+software should already be installed for you (remember to use the `Monday` image - )
 
 We will be using `jellyfish`, `fastqc`, `samtools`, and `bwa` for this analysis. Later, we will also use
 `IGV`.
 
 To check that you have the right software, open a bash terminal and type the program names followed
-by &lt;enter&gt;. (Don't type the dollar signs, these are there to show you the bash prompt). You
+by &lt;enter&gt;. (Don't type the dollar signs, these are there to show you the bash prompt ). You
 should see something like:
 
 ```bash
@@ -79,4 +65,4 @@ Program: bwa (alignment via Burrows-Wheeler transformation)
 Version: 0.7.17-r1188
 ```
 
-That's it!  When you're ready, go to the page on [Inspecting the fastqs](Inspecting_the_fastqs.md).
+That's it!  When you're ready, go back to the [practical](Pipeline_outline.md).
