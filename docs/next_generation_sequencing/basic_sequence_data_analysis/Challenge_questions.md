@@ -4,7 +4,13 @@ sidebar_position: 7
 
 # Challenge questions
 
-## Challenge 1: align and analyse some human data
+We have three challenges.:
+
+* If you want more practice running the pipelines outlined in the practical, try Challenge 1:
+* If you have `IGV` installed on your laptop, and want experience visualising reads in the desktop application (IGV), try Challenge 2.  (Recommended)
+* If you want a real challenge understanding the [GC bump](Quality_control.md#per-sequence-gc-content), try Challenge 3.
+
+## Challenge 1: analyse some human data
 
 In the folder `human/` you'll find some data from a human sample - NA12878:
 
@@ -12,7 +18,7 @@ In the folder `human/` you'll find some data from a human sample - NA12878:
 ls ~sequence_data_analysis/human/
 ```
 
-**Challenge.** Align this data using the [alignment pipeline](Aligning_reads.md). Then look at it
+**Challenge.** QC and align this data using the methods described in the practical. Then look at the result 
 using `samtools tview`.
 
 **Note.** This data is subsampled to chromosome 19. It is a bit bigger than the malaria data; to
@@ -22,9 +28,9 @@ more than 4 please!
 A good region to view is around the gene *FUT2*, which is at `chr19:48645971-48755951`.
 
 **Question.** The SNP [rs601338](https://www.ncbi.nlm.nih.gov/snp/rs601338) in the *FUT2*
-determines *secretor status*. Being a *non-secretor* means that ABH antigens (which are encoded by
-the ABO locus) are not secreted or expressed into bodily fluids in the normal way. Non-secretors
-are [protected against some pathogens including
+determines *secretor status*. Being a *non-secretor* means that blood group antigens (encoded by
+ABO and other loci) are not secreted or expressed into bodily fluids in the normal way.
+Non-secretors are [protected against some pathogens including
 *norovirus*](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6171556/), but are also more susceptible
 to others - so it can be medically important what status you have.
 

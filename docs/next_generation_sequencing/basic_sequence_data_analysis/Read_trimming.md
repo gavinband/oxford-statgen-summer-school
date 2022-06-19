@@ -2,7 +2,7 @@
 sidebar_position: 21
 ---
 
-# Extra - read trimming
+# Appendix - read trimming
 
 Read trimming refers to the process of removing trailing parts of the reads before analysis for various reasons including
 

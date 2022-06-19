@@ -161,4 +161,4 @@ be [improved by re-estimation](https://gatk.broadinstitute.org/hc/en-us/articles
 
 ## Next steps
 
-When you're ready to move on, [continue the practical](Pipeline_outline.md#the-practical-in-a-nutshell).
+When you're ready to move on, [continue the practical](Pipeline_outline.md#the-practical-in-a-nutshell) (go on to step 2).

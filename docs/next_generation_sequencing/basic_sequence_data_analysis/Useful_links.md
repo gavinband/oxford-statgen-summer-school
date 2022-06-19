@@ -10,3 +10,5 @@ sidebar_position: 100
 
 * Illumina's [short video on sequencing by synthesis](https://youtu.be/fCd6B5HRaZ8).
 
+* [Sequencing.qcfail.com](sequencing.qcfail.com)
+

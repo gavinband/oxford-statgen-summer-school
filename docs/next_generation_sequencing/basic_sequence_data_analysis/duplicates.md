@@ -2,7 +2,7 @@
 sidebar_position: 20
 ---
 
-# Extra - understanding sequence duplication levels
+# Appendix - understanding sequence duplication levels
 
 Duplicates arise naturally in sequencing from random fragments that just happen to have
 the same breakpoints. However, as explained a bit more on the [paired-end sequencing theory](Short_read_theory.md)
@@ -65,5 +65,12 @@ other hand sequencing errors can make detection less sensitive.)
 
 Second, fastqc **does not take into account the read pairs here** - it analyses each fastq file
 seperately. Artifically-generated duplicates generally duplicate the whole fragment, meaning that
-**both read 1 and read 2 should be duplicated.**  Consequently 
+**both read 1 and read 2 should be duplicated.**  So fastqc might *overestimate* the duplication rate.
+
+Third, genomes contain duplicated sequence anyway, so some level of duplication is expected.
+
+My hunch is that the 3% duplication rate output by fastqc above is an underestimate. You could try
+comparing the [number of reads that are marked as duplicates](Aligning_reads.md) in the alignment section.
+
+
 
