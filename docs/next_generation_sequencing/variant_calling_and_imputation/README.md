@@ -20,8 +20,8 @@ All the data in this practical comes from the [IGSR](https://www.internationalge
 lists a huge number of open-access datasets that you can use in your analysis (including the 1000
 Genomes Project data).
 
-**Note.** You should have [downloaded the data](Prerequisites.md) already - if not, go and do that
-now.
+**Note.** Before doing anything else, please make sure you have [downloaded the data](Prerequisites.md).
+Then come back here.
 
 ## Steps in the practical
 
