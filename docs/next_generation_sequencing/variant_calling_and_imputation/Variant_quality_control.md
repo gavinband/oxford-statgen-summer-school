@@ -241,16 +241,14 @@ UpSet( upset_format, min_subset_size=20, sort_by='cardinality', show_counts=True
 ```
 
 You should see something like this:
-![img](images/Upset_plot.png)
+![img](images/new_upset.png)
 
 What's plotted here are as follows. Look at the lower panel first. For each filter metric, there's
-one row, and the bar on the left shows the number of variants filtered out by that metric. The
-blobs then indicates all the different combinations of filters that failed together. Finally, the top
-plot shows the number of variants filtered by each of these combinations.
+one row, and the bar on the left shows the number of variants that pass that metric. The
+blobs then indicates all the different combinations of filters that passed together. Finally, the top
+plot shows the number of variants that pass each of these combinations.
 
-For example, in the plot above, 13,898 variants are not filtered out by any filter; the qual filter
-sometimes filters out 387 variants not filtered out by any other metric; 144 variants are
-simultaneously filtered out by `mqsb`, `mq`, and `mq0f`, and so on.
+For example, in the plot above, 11,709 variants pass all filters; 296 pass all filters except bqb, mpb, rpb, etc.
 
 **Question.** What happens if you change the `min_subset_size` in the above?
 
