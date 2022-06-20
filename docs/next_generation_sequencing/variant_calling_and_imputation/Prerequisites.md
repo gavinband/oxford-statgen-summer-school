@@ -24,4 +24,4 @@ rm day_one_afternoon.tgz
 cd variant_calling_and_imputation
 ```
 
-When you're ready, head on to [variant calling](Variant_calling.md).
+When you're ready, head on to [the practical itself](README.md).

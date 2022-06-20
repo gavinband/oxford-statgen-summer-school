@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Outline of sequencing QC, phasing and imputation practical
+# Variant calling, phasing and imputation
 
 This morning we focussed on quality control, aligning, and inspecting some sequence data for a single sample.
 

@@ -5,14 +5,15 @@ sidebar_position: 3
 # Variant calling with bcftools
 
 First let's see how to use a simple pipeline to identify genetic variants
-- using [bcftools mpileup](http://samtools.github.io/bcftools/bcftools.html#mpileup)
+using [bcftools mpileup](http://samtools.github.io/bcftools/bcftools.html#mpileup)
 and [bcftools call](http://samtools.github.io/bcftools/bcftools.html#call).
 
-As this suggests the process has two steps. In the first step (the **mpileup step*), we process the
-reads, identify likely alleles, and compute **genotype likelihoods**. In the second step these are
-used to jointly call variants and genotypes across the samples.
+As this suggests the process has two steps. In the first step (the *mpileup step*), we process the
+reads, identify likely alleles, and compute **genotype likelihoods**. In the second *calling* step
+these are used to jointly call variants and genotypes across the samples.
 
-Let's get started.  Move to a terminal window and make sure you are in the folder `variant_calling_and_imputation`:
+Let's get started. Move to a terminal window and make sure you are in the folder
+`variant_calling_and_imputation`:
 
 ```
 cd ~/variant_calling_and_imputation
@@ -132,6 +133,10 @@ alternative allele, and so on.
 By and large these genotypes correspond to the **maximum likelihood genotype** (as you can tell by
 comparing to the PL fields... remember we're looking for the *smallest* PL because of the PHRED
 scaling.)  However, if there aren't many reads the genotype may also be influenced by the prior.
+
+### Questions
+
+How many of your variants are SNPs?  How many are INDELs?  How many are multi-allelic and how many bi-allelic?
 
 ### Next steps
 
