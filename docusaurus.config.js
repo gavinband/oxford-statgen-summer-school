@@ -12,7 +12,7 @@ const config = {
   title: 'Oxford Statistical Genomics Summer School',
   tagline: 'Genomics, bioinformatics and statistics training resources',
   url: 'https://well.ox.ac.uk/',
-  baseUrl: '/~gav/projects/oxford-statgen-summer-school/',
+  baseUrl: '/~gav/projects/oxford_statgen_summer_school/website/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
