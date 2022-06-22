@@ -9,5 +9,5 @@ To get started, go [to and get the prerequisites](Prerequisites.md).
 ## Contributors
 
 * Gavin Band
-* Mattheiu Miossec
+* Matthieu Miossec
 * Annie Forster
