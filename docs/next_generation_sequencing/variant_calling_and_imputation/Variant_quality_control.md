@@ -216,9 +216,9 @@ for field, (comparison, threshold) in thresholds.items():
     column_name = 'fail_%s' % field
     if threshold is not None:
         if comparison == '>=':
-            info[ column_name ] = (info[field] <= threshold)
+            info[ column_name ] = ~(info[field] >= threshold)
         elif comparison == '<=':
-            info[ column_name ] = (info[field] >= threshold)
+            info[ column_name ] = ~(info[field] <= threshold)
 
 print(info)
 ```            
@@ -241,14 +241,14 @@ UpSet( upset_format, min_subset_size=20, sort_by='cardinality', show_counts=True
 ```
 
 You should see something like this:
-![img](images/new_upset.png)
+![img](images/new_fail_upset.png)
 
 What's plotted here are as follows. Look at the lower panel first. For each filter metric, there's
-one row, and the bar on the left shows the number of variants that pass that metric. The
-blobs then indicates all the different combinations of filters that passed together. Finally, the top
-plot shows the number of variants that pass each of these combinations.
+one row, and the bar on the left shows the number of variants that fail that metric. The
+blobs then indicates all the different combinations of filters that failed together. Finally, the top
+plot shows the number of variants that fail each of these combinations.
 
-For example, in the plot above, 11,709 variants pass all filters; 296 pass all filters except bqb, mpb, rpb, etc.
+For example, in the plot above, 11,709 variants do not fail any filters; 2,966 fail bqb, mpb, rpb only, etc.
 
 **Question.** What happens if you change the `min_subset_size` in the above?
 

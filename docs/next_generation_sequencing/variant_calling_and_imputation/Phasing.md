@@ -121,8 +121,6 @@ although we don't know that from this file). The number after the `|` reflects t
 in the sample (this might be the paternally inherited chromosome, say). And before a `0` means the
 haplotype carries the reference allele and a `1` means the non-reference allele.
 
-[TODO]: plot the haplotypes.
-
 ### Next steps
 
 When you're read [go back to the practical](README.md#steps-in-the-practical) and go on to **imputation**.

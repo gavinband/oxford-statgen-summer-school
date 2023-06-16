@@ -44,7 +44,7 @@ emperical accuracy (ER2) well?  How does this vary with MAF?
 The SNP rs601338 at `chr19:48703417` in *FUT2* determines whether an individual secrets the Lewis
 antigen. An individual who is homozygous AA doesn't secret Lewis antigen ("secretors"), and
 everything else does ("non-secretors"). We have provided a file
-(`secretor/GGVP_secretor_status.txt`) that includes the real secretor status for these individuals.
+(`GGVP/GGVP_secretor_status.txt`) that includes the real secretor status for these individuals.
 
 **Question**. How accurate is the secretor status called from imputation, in comparison to the real data provided?
 
