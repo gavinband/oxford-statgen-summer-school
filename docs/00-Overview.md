@@ -11,11 +11,13 @@ Things to do:
 
 (You can choose a username / password - not your SSO.)
 
-* Please download [IGV desktop app](https://igv.org) on your laptop.
+* Please download [IGV desktop app](https://igv.org) on your laptop.  (For the practical we will use the 'Human (GRCh38/hg38)' reference.)
 
 After the coffee we will start on the practicals:
 
 * **Day 1 Morning session**: Go to the [next generation sequence data analysis](./next_generation_sequencing/basic_sequence_data_analysis/README.md) page.
+
+* **Day 1 Late morning session**: Go to the [Guess the dataset](./next_generation_sequencing/guess_the_dataset/README.md) page.
 
 * **Day 1 Afternoon session**: Go to the [variant calling analysis](./next_generation_sequencing/variant_calling_and_imputation/README.md) page.
 

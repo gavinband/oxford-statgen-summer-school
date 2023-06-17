@@ -2,7 +2,7 @@
 sidebar_position: 2
 ---
 
-# Variant calling, phasing and imputation
+# Afternoon session: variant calling, phasing and imputation
 
 This morning we focussed on quality control, aligning, and inspecting some sequence data for a single sample.
 
