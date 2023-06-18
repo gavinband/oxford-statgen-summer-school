@@ -54,8 +54,9 @@ If you want to go off-piste, feel free to work with any (or all) of the others (
 [Challenge questions](Challenge_questions.md)). Just remember that the human data will align to
 human genome and the malaria data to the malaria genome.
 
-#### Go!
-The steps are as follows. *Can you work out the answers to the questions below? Please make a note of the answers for the consolidation session.*
+#### Now you are ready to start - go!
+
+The steps are as follows. *Can you work out the answers to the questions below?*
 
 1. First **[have a look at the FASTQ files](Inspecting_the_fastqs.md)**.  
 
@@ -74,6 +75,14 @@ Questions: *How are the reads represented in the aligned output file?  How many 
 
 Questions: *Can you find a SNP?  An insertion or deletion?  A structural variant?*
 
+Feel free to work through at your own pace, and to ask an instructor or your neighbour for help if you get stuck or
+have a question. We plan to spend approximately one hour on this part, so spending up to ~30mins on steps 1 & 2, and
+~30mins on steps 3 & 4 would be fine. 
+
+:::tip Note
+This might not be enough time to explore all the material fully so don’t worry if
+you don’t finish in the time today – you can always re-visit these pages later.
+:::
 
 ## Challenge questions
 

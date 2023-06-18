@@ -2,7 +2,7 @@
 sidebar_position: 8
 ---
 
-# Appendix - how accurate is Illumina sequencing?
+# Bonus tutorial: how accurate is Illumina sequencing?
 
 **Note.** Only do this section if you have plenty of time left, and/or have already read the
 [section on QC](Quality_control.md) and the section on [aligning reads](Aligning_reads.md). Other

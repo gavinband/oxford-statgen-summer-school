@@ -1,8 +1,8 @@
 ---
-sidebar_position: 4
+sidebar_position: 8
 ---
 
-# Paired-end sequencing in theory and practice
+# Appendix 1: Paired-end sequencing in theory and practice
 
 ## What paired-end sequence data should lool like
 
@@ -160,8 +160,8 @@ moves off and forms another nearby cluster.) This has the effect of also generat
 - known as **optical duplicates**. (One way to detect these is identical or very similar reads that
 lie in nearby physical locations.) These duplicates occur even if the library preparation does not
 use PCR amplification. See
-[sequencing.qcfail.com](https://sequencing.qcfail.com/articles/illumina-patterned-flow-cells-generat
-e-duplicated-sequences/) for an analysis of this.
+[sequencing.qcfail.com](https://sequencing.qcfail.com/articles/illumina-patterned-flow-cells-generate-duplicated-sequences/)
+for an analysis of this.
 
 #### Incorporation of bases gets out of sync
 
@@ -179,4 +179,5 @@ few bases in the reads, as seen in this file.
 
 ### Next steps
 
-Now get back [back to the practical](Pipeline_outline.md#the-practical-in-a-nutshell), or see the [examples on the QC page](http://localhost:3000/~gav/projects/oxford-statgen-summer-school/next_generation_sequencing/basic_sequence_data_analysis/Quality_control/#a-survey-of-sequencing-performance).
+Now get back [back to the practical](Pipeline_outline.md#the-practical-in-a-nutshell), or
+see the [examples on the QC page](./Quality_control.md/#a-survey-of-sequencing-performance).

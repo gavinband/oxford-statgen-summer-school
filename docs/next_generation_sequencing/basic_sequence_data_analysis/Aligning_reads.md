@@ -2,7 +2,7 @@
 sidebar_position: 5
 ---
 
-# Aligning reads
+# Step 3: Aligning reads
 
 Most analyses of short-read sequence data are based on the basic paradigm made up of two steps:
 
@@ -71,13 +71,15 @@ samtools index QG0033-C.bam
 
 (**Note.** You can see what this has created by running `ls`.)
 
-If you run all that together it might take around 10 minutes to complete (the longest steps being
-the `bwa mem` indexing and alignment steps.) It's worth running the steps one by one to make sure
-they complete without errors, and watching the output to see what is being done. While you're
-waiting for the alignment to complete consider reading the information below about what's in the aligned data,
-[reading more about paired-end sequencing](Short_read_theory.md),
-running an alternative analysis to [estimate error rates](De_novo_error_rate_estimation.md),
-or visiting some other [useful links](Useful_links.md) - whatever you find most useful.
+If you run all that together it might take around 10 minutes to complete (the longest steps being the `bwa mem`
+indexing and alignment steps.) It's worth running the steps one by one to make sure they complete without errors, and
+watching the output to see what is being done. While you're waiting for the alignment to complete, consider reading the
+information below about what's in the aligned data, [reading more about paired-end sequencing theory](Short_read_theory.md),
+or more about the SAM/BAM format and using samtools.
+
+For example here is a [useful overview of SAM format](https://davetang.org/wiki/tiki-index.php?page=SAM), or a page
+with [more tips on using samtools](https://github.com/davetang/learning_bam_file).
+
 
 ### What did the pipeline generate?
 
@@ -278,5 +280,4 @@ rmdir tmp
 
 ## Next steps
 
-Now that we have an aligned set of reads, [go back to the
-practical](Pipeline_outline.md#the-practical-in-a-nutshell) and move on to viewing the read pileups.
+Now that we have an aligned set of reads, move on to [viewing your alignments](./Viewing_alignments.md).

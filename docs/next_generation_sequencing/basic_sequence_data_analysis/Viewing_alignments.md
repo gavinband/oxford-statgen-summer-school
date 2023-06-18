@@ -2,7 +2,7 @@
 sidebar_position: 6
 ---
 
-# Viewing alignments
+# Step 4: Viewing alignments
 
 If you got this far, you should have a file called `QG0033-C.bam` containing aligned,
 duplicate-marked reads.  And we'd like to see how they stack up on the genome.
@@ -62,10 +62,13 @@ mosquito itself has a mixture of parasites.) I'm thinking this because around ha
 an `A` allele and the other half have a `T` allele at the site. This is also seen at other
 sickle-associated alleles like `Pf3D7_02_v3:814288`.
 
-### Next steps
+### Congratulations!
 
-Now go [back to the practical](Pipeline_outline.md#the-practical-in-a-nutshell) and try the [challenge
-questions](Challenge_questions.md).
+Congratulations - you have reached the end of this tutorial on handling next-generation sequencing data.
+
+At around 12pm we will move on to looking at a range of data types and visualising them using IGV. If you have time
+before then, please feel free to look at the [challenge questions](./Challenge_questions.md) or the [bonus tutorial on
+estimating sequencing error rate](./De_novo_error_rate_estimation.md)
 
 
 

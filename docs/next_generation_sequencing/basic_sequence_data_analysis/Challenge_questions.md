@@ -6,8 +6,11 @@ sidebar_position: 7
 
 We have three challenges.:
 
-* If you want more practice running the pipelines outlined in the practical, try Challenge 1:
-* If you have `IGV` installed on your laptop, and want experience visualising reads in the desktop application (IGV), try Challenge 2.  (Recommended)
+* If you want more practice running the pipelines outlined in the practical, try Challenge 1.
+
+* If you have `IGV` installed on your laptop, and want experience visualising reads in the desktop application (IGV),
+  try Challenge 2.
+
 * If you want a real challenge understanding the [GC bump](Quality_control.md#per-sequence-gc-content), try Challenge 3.
 
 ## Challenge 1: analyse some human data
@@ -114,10 +117,10 @@ Do the reads align?  To what organism?  What's going on?
 
 **Note**. For example this was one result I got:
 
-![img](images/BLAST result.png)
+![img](images/BLAST_result.png)
 
-You can try looking at where these reads align to (here `Pf3D7_08_v3:1525593-1525692`) e.g. in
-[PlasmoDB browser](https://plasmodb.org/plasmo/app/jbrowse?data=/a/service/jbrowse/tracks/default&tracks=gene) or the
-[Pf3k browser](https://www.malariagen.net/apps/pf3k/release_3/index.html#genomebrowser).
+You can try looking at where these reads align to (here `Pf3D7_08_v3:1525593-1525692`) e.g. in [PlasmoDB
+browser](https://plasmodb.org/plasmo/app/jbrowse?data=/a/service/jbrowse/tracks/default&tracks=gene) or the [Pf3k
+browser](https://www.malariagen.net/apps/pf3k/release_3/index.html#genomebrowser). What could be going on?
 
 

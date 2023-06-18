@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# What's in the fastq files?
+# Step 1: What's in the fastq files?
 
 ### Using UNIX to inspect the fastqs
 
@@ -84,7 +84,7 @@ The number output is the number of characters in the second line of the file, i.
 **Note.** If you don't yet have facility with these types of command - don't worry, you will gain
 it.  However, don't worry because we'll move to using more sophisticated graphical packages in the next step.
 
-When you're ready to move on, [continue the practical](Pipeline_outline.md#the-practical-in-a-nutshell).
+When you're ready to move on, [get started inspecting sequence data quality](./Quality_control.md).
 
 ## More details on the FASTQ format
 ### Structure

@@ -12,3 +12,9 @@ sidebar_position: 100
 
 * [Sequencing.qcfail.com](sequencing.qcfail.com)
 
+* A [useful overview of SAM format](https://davetang.org/wiki/tiki-index.php?page=SAM), by Dave Tang.
+
+* A [details and examples using samtools](https://github.com/davetang/learning_bam_file), also by Dave Tang.
+
+* A [comprehensive overview of RNA-seq](https://rnaseq.uoregon.edu/).
+

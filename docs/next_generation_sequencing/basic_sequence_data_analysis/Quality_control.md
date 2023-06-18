@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-# Inspecting sequence data quality
+# Step 2: Inspecting sequence data quality
 
 There are a set of analyses that can be carried out directly on a FASTQ file to assess the quality
 of sequencing. These include looking for poor quality data, looking for read duplication, assessing
@@ -57,8 +57,10 @@ page](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/).)
 
 Finally here is an example of [a long-read human dataset](https://www.well.ox.ac.uk/~gav/projects/oxford_statgen_summer_school/sequence_data_analysis/fastqc_examples/human/HV31-PacBio_CCS_fastqc.html) (PacBio Hifi) - this looks quite different.
 
-**Note.** The rest of this page contains information on what's in this fastqc output. Give this a read and
-when you're ready [return to the practical](Pipeline_outline.md#the-practical-in-a-nutshell).
+### Next steps
+
+The rest of this page contains information on what's in this fastqc output. There's lots in here - feel free to read.
+When you're ready move on to [align the reads to the reference genome](./Aligning_reads.md).
 
 ## Interpreting fastqc output
 
@@ -202,4 +204,4 @@ If you see high levels of artifacts of this type, you may want to try [read trim
 
 ### Next steps
 
-Go [back to the practical](Pipeline_outline.md#the-practical-in-a-nutshell).
+When you've read enough, move on to the section on [aligning reads](./Aligning_reads.md).
