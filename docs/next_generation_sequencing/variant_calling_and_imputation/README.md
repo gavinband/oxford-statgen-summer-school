@@ -10,7 +10,9 @@ In this afternoon's session we're going to focus on using a set of sequenced sam
 
 1. identify genetic variants in a region (and work out the sample genotypes at those variants)
 2. *phase* the genotypes so we can see how they align along haplotypes
-3. and use this to impute variants from a second dataset (for which we only have microarray data).
+3. and use this to impute the variants into a second dataset of ~400 samples (for which we only have microarray data).
+
+Finally we'll use this to try to compute *secretor status* of the microarray-typed samples.
 
 Not every possible genetic variant is a real one and to make this work well we will need to do some
 more **quality control**. This time we'll take care to filter the set of variants based on sensible
@@ -31,9 +33,9 @@ The practical has four main steps:
 
 2. We'll then perform [quality control on the initial variant calls](Variant_quality_control.md).
 
-3. Next we will [phase the calls](phasing.md) so we know how they stack up on haplotypes.
+3. Next we will [phase the calls](./Phasing.md) so we know how they stack up on haplotypes.
 
-4. And then we'll [use these haplotypes to impute some microarray data](imputation.md)
+4. And then we'll [use these haplotypes to impute some microarray data](./Imputation.md)
 
-Finally we have - you guessed it - some [challenge question](Challenge_questions.md).  Good luck!
+Finally we have - you guessed it - some challenge questions [on variant calling](./Challenge_questions.md) and [on imputation](./Challenge_questions_2.md).  Good luck!
 

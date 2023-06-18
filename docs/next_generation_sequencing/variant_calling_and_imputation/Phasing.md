@@ -27,7 +27,11 @@ represent all variants as multi-allelic in the VCF file. (This doesn't change th
 but we end up with multiple rows for each multi-allelic variant):
 
 ```
-bcftools norm -m -Oz -o GWD_30x_calls.filtered_split_.vcf.gz GWD_30x_calls.filtered.vcf.gz
+bcftools norm \
+-m - \
+-Oz \
+-o GWD_30x_calls.filtered_split_.vcf.gz \
+GWD_30x_calls.filtered.vcf.gz
 ```
 
 **Question.** Compare these files (using `bcftools view [file] | less -S`.)  Can you see what this has done?
@@ -36,13 +40,11 @@ Now we are ready to phase.  The command is:
 
 ```
 eagle \
-  --geneticMapFile genetic_map/genetic_map_hg38_withX.txt.gz
+  --geneticMapFile genetic_map/genetic_map_hg38_withX.txt.gz \
   --vcf GWD_30x_calls.filtered_split_.vcf.gz \
   --numThreads 2 \
   --outPrefix GWD_30x_calls.phased
 ```
-
-**NOte.** The backslash (`\`) is a *line continuation character*.  The above is run as a single command.
 
 **Note.** This will take a few minutes to run. As always, watch the screen output for a wealth of
 information about what is happening.
@@ -118,7 +120,7 @@ relative to each other.
 You can interpret this as follows: for each sample (column), the number before the `|` reflects the
 first haplotype in the sample (it might for example be the maternally-inherited chromosome,
 although we don't know that from this file). The number after the `|` reflects the second haplotype
-in the sample (this might be the paternally inherited chromosome, say). And before a `0` means the
+in the sample (this might be the paternally inherited chromosome, say). And, as before, a `0` means the
 haplotype carries the reference allele and a `1` means the non-reference allele.
 
 ### Next steps

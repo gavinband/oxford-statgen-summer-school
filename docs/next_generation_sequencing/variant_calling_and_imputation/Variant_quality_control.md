@@ -104,7 +104,7 @@ complex, the simplest way is to use `bcftools` to extract the fields in a table.
 in the terminal like this:
 
 ```
-bcftools query -f '%POS\t%DP\t%QUAL\t%SGB\t%RPB\t%MQB\t%MQSB\t%BQB\t%MQ0F\t%AC\t%AN\t%MQ\n' calls/GWD_30x_calls.vcf.gz > GWD_30x_variant_info.tsv
+bcftools query -f '%POS\t%TYPE\t%DP\t%QUAL\t%SGB\t%RPB\t%MQB\t%MQSB\t%BQB\t%MQ0F\t%AC\t%AN\t%MQ\n' calls/GWD_30x_calls.vcf.gz > GWD_30x_variant_info.tsv
 ```
 
 (I've removed `VDB` which is for RNA-seq data.)
@@ -126,7 +126,7 @@ Now let's use pandas to load the VCF data:
 info = pd.read_csv(
     'GWD_30x_variant_info.tsv',
     sep = '\t', 
-    names = ['pos','dp','qual','sgb','rpb','mqb','mqsb','bqb','mq0f','ac','an','mq'],
+    names = ['pos','type','dp','qual','sgb','rpb','mqb','mqsb','bqb','mq0f','ac','an','mq'],
     na_values = ['.']
 )
 
@@ -171,7 +171,7 @@ plt.tight_layout()
 
 ```python
 os.makedirs("plots", exist_ok = True )
-plt.savefig( "plots/GWD_30x_calls.variant_info.png', dpi=300 )
+plt.savefig( "plots/GWD_30x_calls.variant_info.png", dpi=300 )
 ```
 
 If you stare at these plots for a while you should see:
@@ -259,32 +259,34 @@ In particular it might make sense to:
   0.001 might be appropriate.
   
 * We might want to insist that the variant is seen in at least two samples. This could be done by
-  assuming `AC>1`.
+  assuming `AC >= 2`.
 
 * Maybe 10% is too many reads with mapping quality zero - we might want a more aggressive filter here.
 
+Reach a set of filters that you think are **defensible**. You should expect to filter out the worst-performing variants, but still retain most variants in the data.
 
-Reach a set of filters that you think are **defensible**. You should expect to filter out the worst-performing
-variants, but still retain most variants in the data.
+:::tip Challenge question
 
+To avoid artifacts, it actually makes sense to filter out variants where the coverage is too
+high (as well as too low). In this data, the coverage is around 30x and there are 164 samples, so generally we expect
+around 5000x coverage. Sites with (say) twice that coverage are probably artifacts due to misalignment of reads to
+repetitive sequence.
 
-**Note.** To avoid artifacts, it actually makes sense to filter out variants where the coverage is
-too high (as well as too low). In this data, the coverage is around 30x and there are 164 samples,
-so generally we expect around 5000x coverage. Sites with (say) twice that coverage are probably
-artifacts due to misalignment of reads to repetitive sequence.  
+**Challenge**: For python experts only - update the above code to allow filtering on both low and high coverage.
 
-**Challenge coding question** for python experts only! Update the above code to allow filtering on both
-low and high coverage.  (Otherwise you can add this by hand in the `bcftools` command below.)
+If you don't fancy python hacking, you can also add this by hand in the `bcftools` command below.
+
+:::
 
 ### Setting the filters in stone.
 
 We will now use the `bcftools filter` command to actually filter out the variants. First let's turn
-our chosen thresholds into an appropriate string.  The string we need is:
+our chosen thresholds into an appropriate string. The string we need can be constructed like this:
 
 ```
 bcftools_filters = [
- '%s%s%f' % ( field.upper(), quality, threshold )
- for field, ( equality, threshold ) in thresholds.items()
+ '%s%s%f' % ( field.upper(), comparison, threshold )
+ for field, ( comparison, threshold ) in thresholds.items()
  if threshold is not None
 ]
 
@@ -293,24 +295,31 @@ print( ' & '.join( bcftools_filters ))
 
 It should look something like this (depending on your filters):
 ```
-DP>=1000 & DP<=10000 & MQ>=40 & MQ0F<=0.05 & AN>=300 & AC>=2 && QUAL>=50 & RPB>=0.0001 & MQB>=0.0001 & BQB>=0.0001 & MQSB>=0.0001
+DP>=1000 & DP<=10000 & MQ>=40 & MQ0F<=0.05 & AN>=300 & AC>=2 & QUAL>=50 & RPB>=0.0001 & MQB>=0.0001 & BQB>=0.0001 & MQSB>=0.0001
 ```
 
 Copy that string and head back to your terminal window.  We will now filter the variants:
 
 ```
+# back in your terminal, NOT python!
 bcftools filter -Oz \
 -i '[PUT YOUR FILTER STRING HERE]' \
--o 'GWD_30x_calls.filtered.vcf.gz'
-```
-for example:
-```
-bcftools filter -Oz \
--i 'DP>=1000 & DP<=10000 & MQ>=40 & MQ0F<=0.05 & AN>=300 & AC>=2 && QUAL>=50 & RPB>=0.0001 & MQB>=0.0001 & BQB>=0.0001 & MQSB>=0.0001' \
--o 'GWD_30x_calls.filtered.vcf.gz'
+-o 'GWD_30x_calls.filtered.vcf.gz' \
+calls/GWD_30x_calls.vcf.gz
 ```
 
-**Note.** The backslashes (`\`) are *line continuation characters*.  The above is all one command.
+for example:
+
+```
+bcftools filter -Oz \
+-i 'DP>=1000 & DP<=10000 & MQ>=40 & MQ0F<=0.05 & AN>=300 & AC>=2 & QUAL>=50 & RPB>=0.0001 & MQB>=0.0001 & BQB>=0.0001 & MQSB>=0.0001' \
+-o 'GWD_30x_calls.filtered.vcf.gz' \
+calls/GWD_30x_calls.vcf.gz
+```
+
+:::tip Note
+The backslashes (`\`) are *line continuation characters*, that let us write a single command on multipe lines.
+:::
 
 Finally count the variants in the original and filtered file:
 ```
@@ -322,24 +331,31 @@ bcftools view GWD_30x_calls.filtered.vcf.gz | wc -l
 
 ### Variant calling - challenge questions
 
-Here are two questions that will help you to understand *why* variants fail the filters.
+Here are some harder questions about the above filtering. (Only try these right now if you are in good time though - still quite a bit to do!) If you can try to figure out how to do
+these yourself, then great - if you get stuck, more tips on how to do these questions can be found on the [challenge questions page](Challenge_questions.md).
 
-**Question 1**. Pick a variant that fails one of the filters. Find a sample or samples that was
-called with the alternate allele and use `samtools tview` to inspect the pileup. Is it clear why
-the variant failed the filter?
+:::tip Question 1
+The filtering approach above actually has a bug - it filters out some very important class of variant by accident. Can you figure out what and why?
+:::
+
+:::tip Question 2
+Pick a variant that fails one of the filters. Find a sample or samples that was called with the alternate allele and use `samtools tview` to inspect the pileup. (Or
+download the BAMs and use `IGV` to view them). Is it clear why to you the variant failed the filter?
 
 **Note.** To use the supplied BAM files you will have to take variants in the range
 `chr19:48693971-48707951`.
+:::
 
-**Question 2**. In the lectures we learned that the ratio of transitions to transversions (Ts/Tv)
-can be used to assess the quality of a set of variant calls. (Transitions are interchanges of
-two-ring purines (A<->G) or one-ring pyramidines (C<->T). Transversions are mutations which change
-between purines and pyramidines. See [this
-page](https://www.mun.ca/biology/scarr/Transitions_vs_Transversions.html) for more details). Ts/Tv
-is should generally be around 2 or higher in a robust set of variant calls. **What is the Ts/Tv for
-this data before and after filtering?**
+:::tip Question 3
+In the lectures we learned that the ratio of transitions to transversions (Ts/Tv)
+can be used to assess the quality of a set of variant calls.
 
-(**Note.** I suggest focussing only on bialellic SNPs here).
+**Note.** Transitions are interchanges of two-ring purines (A<->G) or one-ring pyramidines (C<->T). Transversions are mutations which change between purines and pyramidines. See [this
+page](https://www.mun.ca/biology/scarr/Transitions_vs_Transversions.html) for more details).
+
+Ts/Tv values should generally be around 2 or higher in a robust set of variant calls. **What is the Ts/Tv for this data before and after filtering?**
+
+:::
 
 ### Next steps
 

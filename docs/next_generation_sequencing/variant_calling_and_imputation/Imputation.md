@@ -34,17 +34,23 @@ which is why we've called them `GGVP`.)
 **Note.** We have **already QCd and phased these genotypes** for you - in a real analysis you might
 have to do that yourself.
 
-Let's see if we can impute the secretor status SNP.  You can check that it is not genotype in the input data:
+Let's use our phased sequence data to see if we can impute a particular SNP - the *secretor status* SNP rs601338. This is a G>A mutation at `chr19:48,703,417` which determines
+whether individuals secrete the 'Lewis antigen' - and hence A or B blood type antigens - into mucus. You can check that it is not genotype in the input data:
+
 ```
-bcftools view -H -i 'POS=48703417' GGVP/omni2.5M/GGVP/omni2.5M/GGVP-illumina_omni2.5M.phased.vcf.gz | wc -l
+bcftools view \
+-H \
+-i 'POS=48703417' \
+GGVP/omni2.5M/GGVP-illumina_omni2.5M.phased.vcf.gz \
+| wc -l
 ```
 
 **Note.** recall that `wc -l` counts the number of lines in its output.
 
-To use imputation we will use the program `MINIMAC`.  The first step is to convert our reference panel:
+To use imputation we will use the program `MINIMAC`.  The first step is to convert our reference panel to the MINIMAC format:
 
 ```
-/home/jovyan/Minimac3Executable/bin/Minimac3 \
+Minimac3 \
   --refHaps GWD_30x_calls.phased.vcf.gz \
   --processReference \
   --prefix GWD_30x_calls.phased \
@@ -52,12 +58,12 @@ To use imputation we will use the program `MINIMAC`.  The first step is to conve
 ```
 This should output a transformed file `GWD_30x_calls.phased.m3vcf.gz`.
 
-Now use it to impute:
+Now let's use MINIMAC to impute:
 ```
 minimac4 \
   --refHaps "GWD_30x_calls.phased.m3vcf.gz" \
   --mapFile genetic_map/genetic_map_hg38_withX.txt.gz \
-  --haps GGVP/omni2.5M/GGVP/omni2.5M/GGVP-illumina_omni2.5M.phased.vcf.gz \
+  --haps GGVP/omni2.5M/GGVP-illumina_omni2.5M.phased.vcf.gz \
   --ignoreDuplicates \
   --format GT \
   --prefix GGVP-illumina_omni2.5M.imputed
@@ -68,7 +74,7 @@ minimac4 \
 What's happened there?  Well let's look at how many variants were in the files.
 ```
 #Number of variants in the microarray data:
-bcftools view -H GGVP/omni2.5M/GGVP/omni2.5M/GGVP-illumina_omni2.5M.phased.vcf.gz | wc -l
+bcftools view -H GGVP/omni2.5M/GGVP-illumina_omni2.5M.phased.vcf.gz | wc -l
 
 # Number of variants in the reference panel
 bcftools view -H GWD_30x_calls.phased.vcf.gz | wc -l
@@ -93,6 +99,11 @@ chr19	48703417	chr19:48703417:G:A	G	A	.	PASS	AF=0.53395;MAF=0.46605;R2=0.99822;I
 
 It worked!  Imputation has generated best-guess genotypes for `rs601338` (at `chr19:48703417`) for us.
 
+:::tip Question
+Inspect the VCF INFO fields for this SNP.  What frequency does it have?  What is the imputation R2 (a measure of predicted imputation accuracy)?
+Use a similar `bcftools view` command to look up the SNP in our phased reference panel - is the frequency similar?
+:::
+
 ### Next steps
 
 You have successfully used a set of sequence data to identify genetic variants,
@@ -100,4 +111,3 @@ quality control and phase them. And you have used that to impute the important s
 other variants) into another dataset.  Congratulations!
 
 To finish the practical, go back and try the [challenge questions](README.md#steps-in-the-practical).
-

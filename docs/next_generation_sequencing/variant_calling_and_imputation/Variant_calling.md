@@ -35,7 +35,7 @@ the FASTA reference sequence, and inspects the pileup much like we did manually 
 Let's go straight ahead and implement calling:
 
 ```
-bcftools calls -m -v -Oz -o GWD_FUT2_calls.vcf.gz GWD_FUT2_pileup.vcf.gz
+bcftools call -m -v -Oz -o GWD_FUT2_calls.vcf.gz GWD_FUT2_pileup.vcf.gz
 ```
 
 **Note.** The `-m` option means 'use the newer multi-allele calling algorithm', and `-v` means
