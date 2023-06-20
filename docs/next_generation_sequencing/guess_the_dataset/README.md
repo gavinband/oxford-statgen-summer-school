@@ -2,7 +2,7 @@
 sidebar_position: 1.5
 ---
 
-# Late morning: A sightseeing tour of sequence data
+# A sightseeing tour of sequence data
 
 In this section we will have a quick tour through several types of genomic sequencing, using data from a single sample.
 
@@ -64,41 +64,14 @@ You should see the data loaded into a new track.
 
 :::
 
-
 ## The datasets
 
 Ok we are ready!  Let's go:
 
-* [Dataset A](./dataset_a.md) - Illumina short-read genomic sequencing
-* [Dataset B](./dataset_b.md) - PacBio long-read genomic sequencing
-* [Dataset C](./dataset_c.md) - Nanopore long-read genomic sequencing
-* [Dataset D](./dataset_d.md) - Illumina RNA-seq, from CD14+ monocytes
-* [Dataset E](./dataset_e.md) - Illumina RNA-seq, from CD19+ B cells
-* [Dataset F](./dataset_f.md) - ATAC-seq, from CD14+ monocytes
+* Load [dataset A](./dataset_a.md) - Illumina short-read genomic sequencing.
+* Load [datasets B and C](./dataset_b.md) - Nanopore and PacBio long-read genomic sequencing.
+* See [base modifications](./dataset_c.md) in the long-read data.
+* Load [dataset D](./dataset_d.md) - Illumina RNA-seq, from CD14+ monocytes and other cells.
+* Load [Dataset E](./dataset_e.md) - Illumina ATAC-seq.
+* And load [Dataset F](./dataset_f.md) - Illumina sequencing of 10X linked-read libraries.
 
-### Dataset A: Illumina paired-end DNA sequencing
-
-**Dataset link:** <small>`https://tinyurl.com/4zrm6pme/datasetA.bam`</small>
-
-
-:::
-
-### Dataset B: Illumina RNA-seq
-
-**Dataset link:** <small>`https://tinyurl.com/4zrm6pme/datasetB.bam`</small>
-
-This is similar to the DNA sequencing, but for (messenger) RNA instead of DNA.
-
-For the most part it's only genes that get transcribed to mRNA, and only exons that end up in the mature mRNA. So you should see clear patterns of reads above exons and much less
-coverage elsewhere.
-
-Different genes are expressed to different amounts, however, so you might have to look at a few genes to really see what this looks like.
-
-:::tip IGV hint
-
-The coverage tracks have 'Autoscale' turned on - the scale is printed at the top-left of the track, as shown here:
-![img](images/Autoscale.png)
-
-Keep this in mind when comparing genes or tracks for RNA-seq data - the scale will vary a lot as you move around the genome.
-
-:::
