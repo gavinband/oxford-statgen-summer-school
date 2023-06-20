@@ -24,6 +24,14 @@ coverage elsewhere.
 Different genes are expressed to different amounts, however, so you might have to look at a few genes to really see
 what this looks like.
 
+:::caution Warning
+
+A reminder that all data in this sightseeing tour is included strictly for training purposes - it is **not**
+publicly-available data. Please do not share outside this course.
+Contact me (Gavin Band) if you have any queries about this.
+
+:::
+
 ## Questions
 
 * What does *FUT2* look like in the RNA-seq data?

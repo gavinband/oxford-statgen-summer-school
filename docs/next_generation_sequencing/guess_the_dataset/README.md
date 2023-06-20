@@ -21,11 +21,11 @@ which is on chromosome 19.
 The datasets enclosed are all from a single individual, codenamed *healthy volunteer 31* (HV31). If you want to read
 more about sequencing of that individual, see [this paper](https://doi.org/10.1371/journal.pcbi.1009254).
 
-:::caution Warning
+:::tip Note
 
-For this practical we've generated files that only cover a subset of genes, to keep them small. If you can't see any
-data at any point, it might be because you're in the wrong part of the genome. To re-orient yourself, try entering one
-of these genes in the search box:
+For this practical we've generated files that only cover a subset of genes, in order to keep them small. If you can't
+see any data at any point, it might be because you're in the wrong part of the genome. To re-orient yourself, try
+entering one of these genes in the search box:
 
 * *FUT1* and *FUT2* on chromosome 19
 * *APOE*, also on chromosome 19
@@ -33,6 +33,14 @@ of these genes in the search box:
 * *UBASH3A*
 * *G6PD*
 * *GNAS*
+
+:::
+
+:::caution Warning
+
+**Please note** that all data in this sightseeing tour is included strictly for training purposes - it is **not**
+publicly-available data. Please **do not** share outside this course.
+Contact me (Gavin Band) if you have any queries about this.
 
 :::
 

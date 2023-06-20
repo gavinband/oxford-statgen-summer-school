@@ -22,6 +22,14 @@ blood mononuclear cells from *HV31* and sequenced on:
 
 Long-read sequencing is quite a bit different to Illumina sequencing - it is pretty interesting.
 
+:::caution Warning
+
+A reminder that all data in this sightseeing tour is included strictly for training purposes - it is **not**
+publicly-available data. Please do not share outside this course.
+Contact me (Gavin Band) if you have any queries about this.
+
+:::
+
 ## How long-read sequencing works
 
 Nanopore and PacBio are the two main competing long-read platforms currently. They have both similarities and differences.

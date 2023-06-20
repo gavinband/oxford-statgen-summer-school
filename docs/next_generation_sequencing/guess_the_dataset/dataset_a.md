@@ -10,6 +10,7 @@ https://tinyurl.com/3chwns49/illumina.bam
 ```
 (For index URL, add `.bai`).
 
+
 You should be familiar with this type of data by now, as it's what the [earlier
 practical](../basic_sequence_data_analysis/README.md) was all about. The data has 150bp paired-end reads and was
 generated on the [Illumina Novaseq 6000](https://emea.illumina.com/systems/sequencing-platforms/novaseq.html) platform.
@@ -29,6 +30,14 @@ This is a good point to try a few options to get used to IGV.
 
 :::
 
+:::caution Warning
+
+A reminder that all data in this sightseeing tour is included strictly for training purposes - it is **not**
+publicly-available data. Please do not share outside this course.
+Contact me (Gavin Band) if you have any queries about this.
+
+:::
+
 ## Questions
 
 Can you find:
@@ -38,3 +47,4 @@ Can you find:
 * a sequencing error?
 
 When you're ready, move on to [Dataset B](dataset_b.md).
+

@@ -258,8 +258,9 @@ In particular it might make sense to:
 * filter on the various P-values (`rpb`, `mqb`, `bqb` and `mqsb`). Values in the range 0.00001 -
   0.001 might be appropriate.
   
-* We might want to insist that the variant is seen in at least two samples. This could be done by
-  assuming `AC >= 2`.
+* We might want to insist that the variant is seen more than once across the dataset. This could be done by assuming
+  `AC >= 2`. (NB. Due the presence of multi-allelic variants, it's actually easier to add this by hand in the filtering
+  below than to code it in python. But if you're up for a coding challenge, you can try!)
 
 * Maybe 10% is too many reads with mapping quality zero - we might want a more aggressive filter here.
 

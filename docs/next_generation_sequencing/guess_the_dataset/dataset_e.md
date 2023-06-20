@@ -14,6 +14,14 @@ It uses a transposase to introduce sequencing primers specifically into DNA in o
 
 Open chromatin is found upstream of transcribed genes, whereas silenced genes tend to have closed chromatin.
 
+:::caution Warning
+
+A reminder that all data in this sightseeing tour is included strictly for training purposes - it is **not**
+publicly-available data. Please do not share outside this course.
+Contact me (Gavin Band) if you have any queries about this.
+
+:::
+
 ## Questions
 
 * Look at the ATAC, RNA, and long-read 5mC data around some genes.  Do the patterns make sense?
